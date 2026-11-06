@@ -1,6 +1,6 @@
-# agent-instructions
+# llm-instructions
 
-Personal collection of instruction files for AI coding agents, chiefly GitHub Copilot Chat.
+Personal collection of instruction files for coding-focused LLMs, chiefly GitHub Copilot Chat.
 
 ## Contents
 
