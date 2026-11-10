@@ -4,14 +4,14 @@ Personal collection of instruction files for LLMs, chiefly GitHub Copilot Chat.
 
 ## Contents
 
-| File | Target | Applies |
-| --- | --- | --- |
-| [vscode/general.instructions.md](vscode/general.instructions.md) | Copilot Chat in VS Code | Always (`applyTo: "**"`): communication style, engineering principles, Git conventions, workflow |
-| [vscode/commit-message.instructions.md](vscode/commit-message.instructions.md) | Copilot Chat in VS Code | On demand: commit subject/body format, type selection, commit ordering |
-| [vscode/pull-request.instructions.md](vscode/pull-request.instructions.md) | Copilot Chat in VS Code | On demand: grouping commits into PRs, title and body format |
-| [vscode/review.instructions.md](vscode/review.instructions.md) | Copilot Chat in VS Code | On demand: batched audits, findings format, approval workflow |
-| [browser/general.instructions.md](browser/general.instructions.md) | Any LLM | General instructions for non-coding related tasks |
-| [browser/coding.instructions.md](browser/coding.instructions.md) | Copilot Chat on github.com | Condensed version of the VS Code general instructions |
+| File | Target | Description | Applies |
+| --- | --- | --- | --- |
+| [vscode/general.instructions.md](vscode/general.instructions.md) | Copilot Chat in VS Code | Core style and engineering rules | Every request |
+| [vscode/commit-message.instructions.md](vscode/commit-message.instructions.md) | Copilot Chat in VS Code | Commit message format | Writing commits |
+| [vscode/pull-request.instructions.md](vscode/pull-request.instructions.md) | Copilot Chat in VS Code | PR grouping, title and body | Opening PRs |
+| [vscode/review.instructions.md](vscode/review.instructions.md) | Copilot Chat in VS Code | Audit and findings workflow | Reviewing code |
+| [browser/general.instructions.md](browser/general.instructions.md) | Any LLM | General behaviour | Non-coding chats |
+| [browser/coding.instructions.md](browser/coding.instructions.md) | Copilot Chat on github.com | Condensed VS Code general rules | Coding chats |
 
 The on-demand files are selected by VS Code from their `description` front matter; `general.instructions.md` links to them by relative path, so keep them in the same folder.
 
