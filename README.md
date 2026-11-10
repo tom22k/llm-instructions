@@ -1,6 +1,6 @@
 # llm-instructions
 
-Personal collection of instruction files for coding-focused LLMs, chiefly GitHub Copilot Chat.
+Personal collection of instruction files for LLMs, chiefly GitHub Copilot Chat.
 
 ## Contents
 
