@@ -10,7 +10,8 @@ Personal collection of instruction files for LLMs, chiefly GitHub Copilot Chat.
 | [vscode/commit-message.instructions.md](vscode/commit-message.instructions.md) | Copilot Chat in VS Code | On demand: commit subject/body format, type selection, commit ordering |
 | [vscode/pull-request.instructions.md](vscode/pull-request.instructions.md) | Copilot Chat in VS Code | On demand: grouping commits into PRs, title and body format |
 | [vscode/review.instructions.md](vscode/review.instructions.md) | Copilot Chat in VS Code | On demand: batched audits, findings format, approval workflow |
-| [browser/general-browser-chat.instructions.md](browser/general-browser-chat.instructions.md) | Copilot Chat on github.com | Condensed version of the general instructions for the browser |
+| [browser/general.instructions.md](browser/general.instructions.md) | Any LLM | General instructions for non-coding related tasks |
+| [browser/coding.instructions.md](browser/coding.instructions.md) | Copilot Chat on github.com | Condensed version of the VS Code general instructions |
 
 The on-demand files are selected by VS Code from their `description` front matter; `general.instructions.md` links to them by relative path, so keep them in the same folder.
 
