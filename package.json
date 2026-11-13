@@ -1,6 +1,5 @@
 {
   "name": "llm-instructions",
-  "module": "index.ts",
   "type": "module",
   "private": true,
   "scripts": {
