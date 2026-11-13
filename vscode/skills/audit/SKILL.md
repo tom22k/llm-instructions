@@ -1,12 +1,23 @@
 ---
-description: "Use when auditing, reviewing, or cleaning up code across multiple files: batch workflow, audit checklist, findings format, confirmed vs suspected bugs, approval workflow"
+name: audit
+description: "Use only when the user explicitly asks to audit, review, or clean up code (e.g. 'review this folder', 'code review', 'audit src/'). Batched audit workflow with checklist, numbered findings format, confirmed vs suspected bugs and approval before any change. Do not load for ordinary coding or bug-fix requests."
+argument-hint: "<folder or file group> [, <next batch> ...]"
 ---
 
-# Review and Audit Instructions
+# Audit
+
+Audit the folders or file groups the user gives, in the order given. If none are given, ask which to audit.
+
+## Steps
+
+1. Run `git branch --show-current` and `git status`, and read the repository's README and instruction files.
+2. Treat each folder (or file group) as one batch and audit only the first one now.
+3. Report findings in the format below, followed by "Out of scope" and numbered questions.
+4. Stop. Change nothing until I approve findings by number.
 
 ## Scope and Batches
 
-- Treat each listed folder (or file group) as one batch, in the order given. Audit, fix, and report one batch at a time; do not start the next until I approve the current one.
+- Audit, fix, and report one batch at a time; do not start the next until I approve the current one.
 - Re-read the repository's instruction files and re-check `git status`/`git diff` before each batch, since I may have revised your changes or the conventions.
 - Stay within the batch. Record anything found outside it under "Out of scope" without fixing it.
 
@@ -50,4 +61,4 @@ Check each file for, in order of priority:
 - Fix only what was approved, at its root cause; do not opportunistically fix neighbouring code. Raise new findings discovered while fixing as new numbered findings instead.
 - Build and run the tests after the batch, and confirm success before proposing commits.
 - Map every finding to exactly one commit, or state why it was deferred or withdrawn.
-- Report with commit messages per [commit-message.instructions.md](commit-message.instructions.md) and PR grouping per [pull-request.instructions.md](pull-request.instructions.md), then stop for review.
+- Report with commits per the `propose-commits` skill and PR grouping per the `propose-pull-requests` skill, then stop for review.

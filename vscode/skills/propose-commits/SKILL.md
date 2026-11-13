@@ -1,10 +1,18 @@
 ---
-description: "Use when writing, proposing, or reviewing Git commit messages or splitting changes into commits: subject format type(context): summary, type selection, body bullet rules, commit ordering"
+name: propose-commits
+description: "Use when the user asks to commit, propose commits, split changes into commits, or write or review a commit message. Covers the type(context): summary subject format, type selection, body bullet rules and commit ordering. Never commits."
+argument-hint: "[extra context about the change]"
 ---
 
-# Commit Message Instructions
+# Propose Commits
 
-Run `git log --oneline -20` first; where the repository's history or instruction files use a different convention, follow theirs.
+Propose commits for the current uncommitted changes. Never stage, commit, or push.
+
+## Steps
+
+1. Run `git branch --show-current`, `git status`, `git diff`, `git diff --staged`, and `git log --oneline -20`. Where the repository's history or instruction files use a different convention from the one below, follow theirs.
+2. Split the changes into one commit per distinct concern, ordered as described under "Splitting and Presenting Commits".
+3. List anything that looks unintended (debug output, unrelated edits, secrets, line-ending or encoding changes) instead of assigning it to a commit.
 
 ## Subject
 

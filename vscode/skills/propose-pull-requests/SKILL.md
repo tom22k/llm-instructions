@@ -1,10 +1,19 @@
 ---
-description: "Use when grouping commits into pull requests or writing PR titles and descriptions: grouping rules, title format, body template, ready status"
+name: propose-pull-requests
+description: "Use when the user asks to group commits into pull requests, or to write or review a PR title or description. Covers grouping rules, title format, body template and ready status. Never pushes or opens PRs."
+argument-hint: "[base branch]"
 ---
 
-# Pull Request Instructions
+# Propose Pull Requests
 
-Check for a repository PR template (`.github/pull_request_template.md` or `.github/PULL_REQUEST_TEMPLATE/`) first; if one exists, fill it in instead of the body format below.
+Draft pull requests for the commits on the current branch. Never push, open, or edit PRs.
+
+## Steps
+
+1. Use the base branch given by the user; otherwise resolve the default branch with `git symbolic-ref --short refs/remotes/origin/HEAD`.
+2. Run `git log --oneline <base>..HEAD` and `git diff --stat <base>...HEAD`. If there are no commits, say so and stop.
+3. Check for a repository PR template (`.github/pull_request_template.md` or `.github/PULL_REQUEST_TEMPLATE/`); if one exists, fill it in instead of the body format below.
+4. Present the grouping and merge order, then each PR's title and body in a fenced code block.
 
 ## Grouping
 
@@ -16,7 +25,7 @@ Check for a repository PR template (`.github/pull_request_template.md` or `.gith
 
 ## Title
 
-- A single line, `type(context): summary`, under 72 characters, following [commit-message.instructions.md](commit-message.instructions.md).
+- A single line, `type(context): summary`, under 72 characters, following the subject rules of the `propose-commits` skill.
 - For a single-commit PR, reuse the commit subject.
 - For several commits, choose the `type` of the dominant change, the directory common to all commits as `context`, and summarise the shared goal rather than listing the commits.
 

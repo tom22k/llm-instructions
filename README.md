@@ -7,16 +7,16 @@ Personal collection of instruction files for LLMs, chiefly GitHub Copilot Chat.
 | File | Target | Description | Applies |
 | --- | --- | --- | --- |
 | [vscode/general.instructions.md](vscode/general.instructions.md) | Copilot Chat in VS Code | Core style and engineering rules | Every request |
-| [vscode/commit-message.instructions.md](vscode/commit-message.instructions.md) | Copilot Chat in VS Code | Commit message format | Writing commits |
-| [vscode/pull-request.instructions.md](vscode/pull-request.instructions.md) | Copilot Chat in VS Code | PR grouping, title and body | Opening PRs |
-| [vscode/review.instructions.md](vscode/review.instructions.md) | Copilot Chat in VS Code | Audit and findings workflow | Reviewing code |
 | [vscode/typescript.instructions.md](vscode/typescript.instructions.md) | Copilot Chat in VS Code | TypeScript and Bun conventions | `*.ts`, `*.tsx` files |
 | [vscode/python.instructions.md](vscode/python.instructions.md) | Copilot Chat in VS Code | Python conventions | `*.py` files |
+| [vscode/skills/audit/SKILL.md](vscode/skills/audit/SKILL.md) | Copilot in VS Code, CLI | Batched audit and findings workflow | `/audit`, or asking for a review or audit |
+| [vscode/skills/propose-commits/SKILL.md](vscode/skills/propose-commits/SKILL.md) | Copilot in VS Code, CLI | Commit split and message format | `/propose-commits`, or asking for commits |
+| [vscode/skills/propose-pull-requests/SKILL.md](vscode/skills/propose-pull-requests/SKILL.md) | Copilot in VS Code, CLI | PR grouping, title and body | `/propose-pull-requests`, or asking for PRs |
 | [templates/AGENTS.md](templates/AGENTS.md) | Any agent reading `AGENTS.md` | Per-repository skeleton | Copied into a repository |
 | [browser/general.instructions.md](browser/general.instructions.md) | Any LLM | General behaviour | Non-coding chats |
 | [browser/coding.instructions.md](browser/coding.instructions.md) | Copilot Chat on github.com | Condensed VS Code general rules | Coding chats |
 
-The on-demand files are selected by VS Code from their `description` front matter; `general.instructions.md` links to them by relative path, so keep them in the same folder.
+Instruction files apply to every request or to matching files; skills hold task workflows and load on demand.
 
 ## Usage
 
@@ -34,6 +34,10 @@ Either copy the files in `vscode/` to the user prompts folder (`%APPDATA%\Code\U
 ### GitHub Copilot Chat in the browser
 
 `browser/coding.instructions.md` has no front matter and is not loaded by VS Code. Paste its contents into the personal instructions of Copilot Chat on github.com. It is a condensed restatement of `vscode/general.instructions.md`, so update both when changing a rule.
+
+### Skills
+
+The folders in `vscode/skills/` are self-contained skills. Copy each folder to `~/.copilot/skills/`, keeping the folder name equal to the skill's `name`. Each runs as a slash command (`/audit`, `/propose-commits`, `/propose-pull-requests`), and the agent also loads it when a request matches its `description`. `general.instructions.md` refers to them by name.
 
 ### Repository template
 

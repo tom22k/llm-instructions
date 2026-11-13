@@ -17,8 +17,8 @@ End every reply with a brief but complete note of what you skipped or did not ch
 
 - Never assume work is committed. Run `git log`, `git status` or `git diff` before presenting a commit message or describing what has been committed. Check the current branch before starting, and re-check `git status` after I report a commit; I may revise changes first.
 - Never commit, branch, or open PRs. Split changes into one commit per distinct concern, list the files (or hunks) for each, and supply the messages for me to commit.
-- Commit messages: follow [commit-message.instructions.md](commit-message.instructions.md).
-- Pull requests: follow [pull-request.instructions.md](pull-request.instructions.md).
+- Commit messages: follow the `propose-commits` skill.
+- Pull requests: follow the `propose-pull-requests` skill.
 
 ## Minimal Change
 
@@ -89,7 +89,7 @@ For new projects, or where the repository has no established convention:
 
 ### Before writing
 
-- For audits, reviews, or multi-file work, follow [review.instructions.md](review.instructions.md).
+- For audits, reviews, or multi-file work, follow the `audit` skill.
 - Diagnose from evidence (logs, error output, stack traces) and fix the root cause, not symptoms. For bug fixes, grep every caller of the function you touch first, then fix once in the shared code.
 - State what the change does and why, broken into discrete steps. Wait for confirmation if it is non-trivial or involves a design choice (ask, do not guess).
 - If a request is too broad, break it into smaller tasks; if it is complex, propose a simpler alternative first and explain the trade-off.
