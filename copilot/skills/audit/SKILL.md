@@ -19,7 +19,8 @@ Audit the folders or file groups the user gives, in the order given. If none are
 
 - Audit, fix, and report one batch at a time; do not start the next until I approve the current one.
 - Re-read the repository's instruction files and re-check `git status`/`git diff` before each batch, since I may have revised your changes or the conventions.
-- Stay within the batch. Record anything found outside it under "Out of scope" without fixing it.
+- The batch limits what you report and change, not what you read: read any file in the workspace (callers, usages, docs, project files) for context without asking.
+- If problems are found outside the batch, record them under "Out of scope" without fixing them.
 
 ## What to Look For
 
