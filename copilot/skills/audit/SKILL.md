@@ -43,11 +43,11 @@ Check each file for, in order of priority:
 
   ```
   N. [Severity] [Confirmed | Suspected] Short title
-     - **Where:** <file link with line range>
-     - **Evidence:** <what the code does, and the input or state that triggers it>
-     - **Fix:** <proposed change>
-     - **Trade-offs:** <cost, risk, alternatives>
-     - **Behaviour change:** <None | what changes in behaviour, error propagation, or user-visible output>
+      - **Where:** <file link to the first line; range in text>
+      - **Evidence:** <what the code does, and the input or state that triggers it>
+      - **Fix:** <proposed change>
+      - **Trade-offs:** <cost, risk, alternatives>
+      - **Behaviour change:** <None | what changes in behaviour, error propagation, or user-visible output>
   ```
 
 - Severity: **High** (crash, data loss, security), **Medium** (wrong result in a reachable case), **Low** (maintainability, readability, performance without user impact).
