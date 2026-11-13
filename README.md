@@ -31,3 +31,15 @@ Either copy the files in `vscode/` to the user prompts folder (`%APPDATA%\Code\U
 ### GitHub Copilot Chat in the browser
 
 `general-browser-chat.instructions.md` has no front matter and is not loaded by VS Code. Paste its contents into the personal instructions of Copilot Chat on github.com. It is a condensed restatement of `general.instructions.md`, so update both when changing a rule.
+
+## Size Limits
+
+- `browser/coding.instructions.md`: at most 4,000 characters, the limit for personal instructions on github.com.
+- Every other Markdown file: at most 150 lines.
+
+Check both with [Bun](https://bun.sh):
+
+```sh
+bun scripts/check-sizes.ts
+bun test
+```
