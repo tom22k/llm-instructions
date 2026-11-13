@@ -89,7 +89,7 @@ For new projects, or where the repository has no established convention:
 
 ### Before writing
 
-- For audits, reviews, or multi-file work, follow the `audit` skill.
+- For audits and reviews, follow the `audit` skill.
 - Diagnose from evidence (logs, error output, stack traces) and fix the root cause, not symptoms. For bug fixes, grep every caller of the function you touch first, then fix once in the shared code.
 - State what the change does and why, broken into discrete steps. Wait for confirmation if it is non-trivial or involves a design choice (ask, do not guess).
 - If a request is too broad, break it into smaller tasks; if it is complex, propose a simpler alternative first and explain the trade-off.
