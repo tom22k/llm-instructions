@@ -48,8 +48,10 @@ Check each file for, in order of priority:
       - **Fix:** <proposed change>
       - **Trade-offs:** <cost, risk, alternatives>
       - **Behaviour change:** <None | what changes in behaviour, error propagation, or user-visible output>
+      - **Test:** <Suspected only: steps that confirm or refute it>
   ```
 
+- Give every field, in this order; write `None` rather than omitting one. Include `Test:` only for Suspected findings, and add no other fields.
 - Severity: **High** (crash, data loss, security), **Medium** (wrong result in a reachable case), **Low** (maintainability, readability, performance without user impact).
 - Confirmed means provable from the code alone. Otherwise mark it Suspected and ask the user to test it rather than fixing speculatively. When the user reports it does not reproduce, withdraw it with the reason or explain the exact conditions under which it occurs.
 - Any finding with a behaviour change needs the user's explicit decision; never fold it into a refactor.
