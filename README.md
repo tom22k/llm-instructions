@@ -6,38 +6,41 @@ Personal collection of instruction files for LLMs, chiefly GitHub Copilot Chat.
 
 | File | Target | Description | Applies |
 | --- | --- | --- | --- |
-| [vscode/general.instructions.md](vscode/general.instructions.md) | Copilot Chat in VS Code | Core style and engineering rules | Every request |
-| [vscode/typescript.instructions.md](vscode/typescript.instructions.md) | Copilot Chat in VS Code | TypeScript and Bun conventions | `*.ts`, `*.tsx` files |
-| [vscode/python.instructions.md](vscode/python.instructions.md) | Copilot Chat in VS Code | Python conventions | `*.py` files |
-| [vscode/skills/audit/SKILL.md](vscode/skills/audit/SKILL.md) | Copilot in VS Code, CLI | Batched audit and findings workflow | `/audit`, or asking for a review or audit |
-| [vscode/skills/propose-commits/SKILL.md](vscode/skills/propose-commits/SKILL.md) | Copilot in VS Code, CLI | Commit split and message format | `/propose-commits`, or asking for commits |
-| [vscode/skills/propose-pull-requests/SKILL.md](vscode/skills/propose-pull-requests/SKILL.md) | Copilot in VS Code, CLI | PR grouping, title and body | `/propose-pull-requests`, or asking for PRs |
+| [copilot/copilot-instructions.md](copilot/copilot-instructions.md) | Copilot in VS Code, CLI | Core style and engineering rules | Every request |
+| [copilot/instructions/typescript.instructions.md](copilot/instructions/typescript.instructions.md) | Copilot in VS Code, CLI | TypeScript and Bun conventions | `*.ts`, `*.tsx` files |
+| [copilot/instructions/python.instructions.md](copilot/instructions/python.instructions.md) | Copilot in VS Code, CLI | Python conventions | `*.py` files |
+| [copilot/skills/audit/SKILL.md](copilot/skills/audit/SKILL.md) | Copilot in VS Code, CLI | Batched audit and findings workflow | `/audit`, or asking for a review or audit |
+| [copilot/skills/propose-commits/SKILL.md](copilot/skills/propose-commits/SKILL.md) | Copilot in VS Code, CLI | Commit split and message format | `/propose-commits`, or asking for commits |
+| [copilot/skills/propose-pull-requests/SKILL.md](copilot/skills/propose-pull-requests/SKILL.md) | Copilot in VS Code, CLI | PR grouping, title and body | `/propose-pull-requests`, or asking for PRs |
 | [templates/AGENTS.md](templates/AGENTS.md) | Any agent reading `AGENTS.md` | Per-repository skeleton | Copied into a repository |
 | [browser/general.instructions.md](browser/general.instructions.md) | Any LLM | General behaviour | Non-coding chats |
-| [browser/coding.instructions.md](browser/coding.instructions.md) | Copilot Chat on github.com | Condensed VS Code general rules | Coding chats |
+| [browser/coding.instructions.md](browser/coding.instructions.md) | Copilot Chat on github.com | Condensed `copilot-instructions.md` | Coding chats |
 
-Instruction files apply to every request or to matching files; skills hold task workflows and load on demand.
+`copilot/` mirrors the Copilot user folder (`~/.copilot`). `copilot-instructions.md` applies to every request; files in `instructions/` apply only when the agent works on files matching their `applyTo`; skills hold task workflows and load on demand.
 
 ## Usage
 
-### VS Code
+### Copilot in VS Code and Copilot CLI
 
-Either copy the files in `vscode/` to the user prompts folder (`%APPDATA%\Code\User\prompts` on Windows), or point VS Code at this repository so edits apply without copying:
+Copy `copilot/` into `~/.copilot` (or `$COPILOT_HOME` if set) with:
 
-```jsonc
-// settings.json
-"chat.instructionsFilesLocations": {
- "C:/path/to/agent-instructions/vscode": true
-}
+```sh
+bun scripts/install.ts
 ```
+
+- New and identical files are installed or skipped silently.
+- If any installed file differs from this repository, nothing is written and the differing files are listed as `conflict`. Check them for edits worth keeping, then re-run with `--force` to overwrite.
+- Installed `*.instructions.md` files with no counterpart here are listed as `unmanaged`; delete them by hand if they are stale copies.
+
+Re-run after every change, and start a new chat for it to take effect. The Copilot harness does not read the VS Code profile prompts folder, and the deprecated Local harness is removed in February 2027.
 
 ### GitHub Copilot Chat in the browser
 
-`browser/coding.instructions.md` has no front matter and is not loaded by VS Code. Paste its contents into the personal instructions of Copilot Chat on github.com. It is a condensed restatement of `vscode/general.instructions.md`, so update both when changing a rule.
+`browser/coding.instructions.md` has no front matter and is not loaded by VS Code. Paste its contents into the personal instructions of Copilot Chat on github.com. It is a condensed restatement of `copilot/copilot-instructions.md`, so update both when changing a rule.
 
 ### Skills
 
-The folders in `vscode/skills/` are self-contained skills. Copy each folder to `~/.copilot/skills/`, keeping the folder name equal to the skill's `name`. Each runs as a slash command (`/audit`, `/propose-commits`, `/propose-pull-requests`), and the agent also loads it when a request matches its `description`. `general.instructions.md` refers to them by name.
+Each folder in `copilot/skills/` is a self-contained skill whose folder name equals its `name`. Each runs as a slash command (`/audit`, `/propose-commits`, `/propose-pull-requests`), and the agent also loads it when a request matches its `description`. `copilot-instructions.md` refers to them by name.
 
 ### Repository template
 
