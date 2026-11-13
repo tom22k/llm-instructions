@@ -5,7 +5,7 @@ applyTo: "**/*.{ts,tsx}"
 
 # TypeScript Instructions
 
-Language-neutral rules live in [general.instructions.md](general.instructions.md); this file adds only what is specific to TypeScript and Bun.
+Language-neutral rules live in the personal `copilot-instructions.md`; this file adds only what is specific to TypeScript and Bun.
 
 ## Runtime
 
