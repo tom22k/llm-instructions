@@ -10,7 +10,8 @@ export function measure(path: string, text: string): Measurement {
 	if (path === BROWSER_CODING_FILE) {
 		return { count: [...normalised].length, limit: MAX_BROWSER_CHARS, unit: "characters" };
 	}
-	const lines = normalised === "" ? 0 : normalised.split("\n").length - (normalised.endsWith("\n") ? 1 : 0);
+	const trailingNewline = normalised.endsWith("\n") ? 1 : 0;
+	const lines = normalised === "" ? 0 : normalised.split("\n").length - trailingNewline;
 	return { count: lines, limit: MAX_LINES, unit: "lines" };
 }
 
@@ -22,13 +23,22 @@ if (import.meta.main) {
 		process.exit(2);
 	}
 
+	const paths = listing.stdout.toString().split("\n").filter((path) => path !== "");
+	// Tracked files deleted from the working tree have no text to measure.
+	const texts = await Promise.all(
+		paths.map(async (path) => {
+			const file = Bun.file(path);
+			return (await file.exists()) ? file.text() : undefined;
+		}),
+	);
+
 	let failed = false;
-	for (const path of listing.stdout.toString().split("\n")) {
-		const file = Bun.file(path);
-		if (path === "" || !(await file.exists())) {
+	for (const [index, path] of paths.entries()) {
+		const text = texts[index];
+		if (text === undefined) {
 			continue;
 		}
-		const { count, limit, unit } = measure(path, await file.text());
+		const { count, limit, unit } = measure(path, text);
 		const ok = count <= limit;
 		failed ||= !ok;
 		console.log(`${ok ? "ok  " : "FAIL"} ${path}: ${count}/${limit} ${unit}`);

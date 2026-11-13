@@ -7,7 +7,7 @@ const SOURCE_DIR = join(import.meta.dir, "..", "copilot");
 async function listFiles(dir: string, pattern: string): Promise<string[]> {
 	// Bun.Glob yields backslash-separated paths on Windows.
 	const paths = await Array.fromAsync(new Bun.Glob(pattern).scan({ cwd: dir }));
-	return paths.map((path) => path.replaceAll("\\", "/")).sort();
+	return paths.map((path) => path.replaceAll("\\", "/")).sort((a, b) => a.localeCompare(b));
 }
 
 export type Outcome = "created" | "unchanged" | "updated" | "conflict";
