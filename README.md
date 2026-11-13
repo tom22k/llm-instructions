@@ -10,6 +10,8 @@ Personal collection of instruction files for LLMs, chiefly GitHub Copilot Chat.
 | [vscode/commit-message.instructions.md](vscode/commit-message.instructions.md) | Copilot Chat in VS Code | Commit message format | Writing commits |
 | [vscode/pull-request.instructions.md](vscode/pull-request.instructions.md) | Copilot Chat in VS Code | PR grouping, title and body | Opening PRs |
 | [vscode/review.instructions.md](vscode/review.instructions.md) | Copilot Chat in VS Code | Audit and findings workflow | Reviewing code |
+| [vscode/typescript.instructions.md](vscode/typescript.instructions.md) | Copilot Chat in VS Code | TypeScript and Bun conventions | `*.ts`, `*.tsx` files |
+| [vscode/python.instructions.md](vscode/python.instructions.md) | Copilot Chat in VS Code | Python conventions | `*.py` files |
 | [browser/general.instructions.md](browser/general.instructions.md) | Any LLM | General behaviour | Non-coding chats |
 | [browser/coding.instructions.md](browser/coding.instructions.md) | Copilot Chat on github.com | Condensed VS Code general rules | Coding chats |
 

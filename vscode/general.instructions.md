@@ -52,6 +52,7 @@ Priorities, in order: correctness over cleverness (explicit validation beats ass
 - Prefer flattening (early `continue`/`return`, combined conditions) over deep nesting; keep Cognitive Complexity within 15 (S3776). Declare variables at the narrowest scope possible, avoid implicit type conversions, and guard against null/undefined before dereferencing.
 - Place fields, types, enums, and properties together at the top of a class/module, before any methods.
 - Never duplicate logic: extract the shared part of an existing function so both callers reuse it; values shared across files live in one named constant. Do not extract helpers/predicates with only a single caller unless an analyser rule requires it (e.g. S3776); state the justification.
+- Config and constants modules hold genuine tunables only (thresholds, limits, paths, model names). Inline one-off literals such as field or header names, and use standard-library enums for standard values (e.g. HTTP status codes).
 - Prefer descriptive names over commentary. Comment only the why the code cannot show, in one line: API facts or platform quirks, never decisions or history. Use plain comments for groups of fields or reasoning; never add doc comments that restate a name, nor replace a useful doc comment with a weaker one. Empty blocks need a comment explaining why (S108).
 - Only write UTF-8 content; never introduce characters from other encodings or a BOM.
 
