@@ -38,15 +38,15 @@ Check each file for, in order of priority:
 - Inspect the code first, then present findings before changing anything; implement only what I approve.
 - Number findings continuously across batches. Never renumber; withdrawn findings keep their number, marked as withdrawn with the reason.
 - Group trivial mechanical findings (ordering, naming, comment clean-up) into one finding per file rather than one per line.
-- Format each finding as:
+- Format each finding (unfenced, not in a code block) as:
 
   ```
   N. [Severity] [Confirmed | Suspected] Short title
-     Where: <file link with line range>
-     Evidence: <what the code does, and the input or state that triggers it>
-     Fix: <proposed change>
-     Trade-offs: <cost, risk, alternatives>
-     Behaviour change: <None | what changes in behaviour, error propagation, or user-visible output>
+     - **Where:** <file link with line range>
+     - **Evidence:** <what the code does, and the input or state that triggers it>
+     - **Fix:** <proposed change>
+     - **Trade-offs:** <cost, risk, alternatives>
+     - **Behaviour change:** <None | what changes in behaviour, error propagation, or user-visible output>
   ```
 
 - Severity: **High** (crash, data loss, security), **Medium** (wrong result in a reachable case), **Low** (maintainability, readability, performance without user impact).
