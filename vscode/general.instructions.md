@@ -3,7 +3,7 @@ description: "Coding standards, engineering principles (design, correctness, err
 applyTo: "**"
 ---
 
-# General Copilot Instructions
+# General Coding Instructions
 
 These instructions cover coding standards, engineering principles, Git conventions, and interaction style for any repository. Refer to the repository's README, `docs/` directory, and any repo-specific instruction files for the project overview, tech stack, and architecture; where they conflict with these instructions, the repo-specific guidance wins. Treat the principles as strong defaults: deviate only with a stated, one-line reason.
 
