@@ -14,7 +14,7 @@ async function readText(path: string): Promise<string> {
 }
 
 export function parseRule(name: string, text: string): Rule {
-	const match = /^---\n([\s\S]*?)\n---\n/.exec(text);
+	const match = /^---\n(.*?)\n---\n/s.exec(text);
 	const meta: unknown = match?.[1] === undefined ? undefined : Bun.YAML.parse(match[1]);
 	if (match === null || typeof meta !== "object" || meta === null) {
 		throw new Error(`src/rules/${name}.md: missing YAML front matter; add description and globs.`);
