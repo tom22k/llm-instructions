@@ -29,6 +29,7 @@ Codex and Gemini CLI have no path-scoped rules, so they do not receive the langu
 | [templates/AGENTS.md](templates/AGENTS.md) | Any agent reading `AGENTS.md` | Per-repository skeleton, copied into a repository |
 | [browser/general.instructions.md](browser/general.instructions.md) | Any LLM | General behaviour for non-coding chats |
 | [browser/coding.instructions.md](browser/coding.instructions.md) | Copilot Chat on github.com | Condensed `src/instructions.md` for coding chats |
+| [browser/skills/cover-letter/SKILL.md](browser/skills/cover-letter/SKILL.md) | Chat apps that accept uploaded skills | Cover letter from a CV (Markdown or PDF), a job description and an optional candidate profile |
 
 ## Editing
 
@@ -65,6 +66,10 @@ Re-run after every change, and start a new session for it to take effect. The Co
 ### Skills
 
 Each folder in `src/skills/` is a self-contained [Agent Skill](https://agentskills.io/specification) whose folder name equals its `name`. Agents load a skill when a request matches its `description`; Copilot and Claude Code also run it as a slash command (`/audit`), and Codex as a mention (`$audit`). The main instructions refer to them by name.
+
+### Cover letter skill
+
+Upload `browser/skills/cover-letter/` as a skill, then attach a CV and a job description. Optionally attach a candidate profile with facts that persist across applications, copied from [assets/profile.template.md](browser/skills/cover-letter/assets/profile.template.md). Keep the filled-in profile outside this repository, since it holds personal data.
 
 ### Repository template
 
