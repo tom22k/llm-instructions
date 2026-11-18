@@ -44,19 +44,19 @@ bun scripts/build.ts
 
 ## Usage
 
-### Copilot in VS Code and Copilot CLI
-
-Copy `copilot/` into `~/.copilot` (or `$COPILOT_HOME` if set) with:
+### Coding agents
 
 ```sh
-bun scripts/install.ts
+bun scripts/install.ts [copilot|claude|codex|gemini|all] [--force]
 ```
+
+Without an agent argument, the script asks for one.
 
 - New and identical files are installed or skipped silently.
 - If any installed file differs from this repository, nothing is written and the differing files are listed as `conflict`. Check them for edits worth keeping, then re-run with `--force` to overwrite.
-- Installed `*.instructions.md` files with no counterpart here are listed as `unmanaged`; delete them by hand if they are stale copies.
+- Installed rule files with no counterpart here are listed as `unmanaged`; delete them by hand if they are stale copies.
 
-Re-run after every change, and start a new chat for it to take effect. The Copilot harness does not read the VS Code profile prompts folder, and the deprecated Local harness is removed in February 2027.
+Re-run after every change, and start a new session for it to take effect. The Copilot harness does not read the VS Code profile prompts folder, and the deprecated Local harness is removed in February 2027.
 
 ### GitHub Copilot Chat in the browser
 
