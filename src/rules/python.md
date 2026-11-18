@@ -1,11 +1,11 @@
 ---
 description: "Python conventions: type hints, pytest, standard-library idioms, logging"
-applyTo: "**/*.py"
+globs: "**/*.py"
 ---
 
 # Python Instructions
 
-Language-neutral rules live in the personal `copilot-instructions.md`; this file adds only what is specific to Python.
+Language-neutral rules live in the personal `{{mainFile}}`; this file adds only what is specific to Python.
 
 ## Typing
 

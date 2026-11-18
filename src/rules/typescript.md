@@ -1,11 +1,11 @@
 ---
 description: "TypeScript and Bun conventions: runtime APIs, formatting, compiler strictness, typing idioms"
-applyTo: "**/*.{ts,tsx}"
+globs: "**/*.{ts,tsx}"
 ---
 
 # TypeScript Instructions
 
-Language-neutral rules live in the personal `copilot-instructions.md`; this file adds only what is specific to TypeScript and Bun.
+Language-neutral rules live in the personal `{{mainFile}}`; this file adds only what is specific to TypeScript and Bun.
 
 ## Runtime
 
