@@ -73,15 +73,19 @@ if (import.meta.main) {
 	for (const { target, outcome } of results) {
 		console.log(`${outcome.padEnd(9)} ${target}`);
 	}
-	for (const agent of agents) {
-		const rules = AGENTS[agent].rules;
-		if (rules === undefined) {
-			continue;
-		}
-		const targetDir = AGENTS[agent].installPath(rules.dir, env);
-		for (const path of await findUnmanaged(join(REPO_ROOT, agent, rules.dir), targetDir, `**/*${rules.suffix}`)) {
-			console.log(`unmanaged ${join(targetDir, path)} (not in this repo; delete it if stale)`);
-		}
+	const unmanaged = await Promise.all(
+		agents.map(async (agent) => {
+			const rules = AGENTS[agent].rules;
+			if (rules === undefined) {
+				return [];
+			}
+			const targetDir = AGENTS[agent].installPath(rules.dir, env);
+			const paths = await findUnmanaged(join(REPO_ROOT, agent, rules.dir), targetDir, `**/*${rules.suffix}`);
+			return paths.map((path) => join(targetDir, path));
+		}),
+	);
+	for (const path of unmanaged.flat()) {
+		console.log(`unmanaged ${path} (not in this repo; delete it if stale)`);
 	}
 
 	const conflicts = results.filter((result) => result.outcome === "conflict").length;

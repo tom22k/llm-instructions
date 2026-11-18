@@ -66,6 +66,37 @@ test("lists installed files matching the pattern that are missing from the sourc
 	expect(await findUnmanaged(source, target, "**/*.instructions.md")).toEqual(["review.instructions.md"]);
 });
 
+test("reports unmanaged rules for all selected agents in order", async () => {
+	const copilotRule = join(target, "copilot", "instructions", "old.instructions.md");
+	const claudeRule = join(target, "claude", "rules", "old.md");
+	await Promise.all([Bun.write(copilotRule, "old"), Bun.write(claudeRule, "old")]);
+	const child = Bun.spawn([process.execPath, join(import.meta.dir, "install.ts"), "all"], {
+		env: {
+			...process.env,
+			HOME: target,
+			USERPROFILE: target,
+			COPILOT_HOME: join(target, "copilot"),
+			CLAUDE_CONFIG_DIR: join(target, "claude"),
+			CODEX_HOME: join(target, "codex"),
+		},
+		stdin: "ignore",
+		stdout: "pipe",
+		stderr: "pipe",
+	});
+
+	const [stdout, stderr, exitCode] = await Promise.all([
+		new Response(child.stdout).text(),
+		new Response(child.stderr).text(),
+		child.exited,
+	]);
+
+	expect(exitCode).toBe(0);
+	expect(stderr).toBe("");
+	expect(stdout).toContain(`unmanaged ${copilotRule}`);
+	expect(stdout).toContain(`unmanaged ${claudeRule}`);
+	expect(stdout.indexOf(`unmanaged ${copilotRule}`)).toBeLessThan(stdout.indexOf(`unmanaged ${claudeRule}`));
+});
+
 test("routes Codex skills to ~/.agents/skills and AGENTS.md to CODEX_HOME", () => {
 	const env = { home: "/home/u", vars: { CODEX_HOME: "/codex" } };
 

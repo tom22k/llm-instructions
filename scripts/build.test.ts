@@ -16,6 +16,7 @@ test("converts rule front matter per agent and omits rules where unsupported", a
 
 test("rejects a rule without globs", () => {
 	expect(() => parseRule("bad", '---\ndescription: "x"\n---\nbody')).toThrow("globs");
+	expect(() => parseRule("bad", '---\ndescription: "x"\n---\nbody')).toThrow(TypeError);
 });
 
 test("committed agent directories match the output of scripts/build.ts", async () => {

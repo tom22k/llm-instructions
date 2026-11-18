@@ -21,7 +21,7 @@ export function parseRule(name: string, text: string): Rule {
 	}
 	const { description, globs } = meta as Record<string, unknown>; // Narrowed field by field below.
 	if (typeof description !== "string" || typeof globs !== "string") {
-		throw new Error(`src/rules/${name}.md: front matter needs string fields description and globs.`);
+		throw new TypeError(`src/rules/${name}.md: front matter needs string fields description and globs.`);
 	}
 	return { name, description, globs, body: text.slice(match[0].length) };
 }
@@ -63,5 +63,5 @@ if (import.meta.main) {
 	// Agent directories are fully generated, so clearing them removes output for deleted sources.
 	await Promise.all(AGENT_NAMES.map((agent) => rm(join(REPO_ROOT, agent), { recursive: true, force: true })));
 	await Promise.all([...output].map(([path, text]) => Bun.write(join(REPO_ROOT, path), text)));
-	console.log(`Generated ${output.size} files in ${AGENT_NAMES.map((agent) => `${agent}/`).join(", ")}.`);
+	console.log(`Generated ${output.size} files in ${AGENT_NAMES.map((agent) => agent + "/").join(", ")}.`);
 }
