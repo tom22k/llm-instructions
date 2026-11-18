@@ -48,7 +48,7 @@ Copy `templates/AGENTS.md` to the root of a repository and fill in the placehold
 
 ## Size Limits
 
-- `browser/coding.instructions.md`: at most 4,000 characters, the limit for personal instructions on github.com.
+- Top-level Markdown files in `browser/`: at most 4,000 characters each, the limit for personal instructions on github.com.
 - Every other Markdown file: at most 150 lines.
 
 Check both with [Bun](https://bun.sh):

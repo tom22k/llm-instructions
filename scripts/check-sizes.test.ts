@@ -12,8 +12,12 @@ test("fails other files above 150 lines", () => {
 	expect(measure("a.md", "x\n".repeat(151)).count).toBe(151);
 });
 
-test("counts browser file in characters, ignoring CR and counting code points", () => {
+test("counts browser files in characters, ignoring CR and counting code points", () => {
 	expect(measure("browser/coding.instructions.md", "a\r\nb").count).toBe(3);
 	expect(measure("browser/coding.instructions.md", "\u{1F600}").count).toBe(1);
-	expect(measure("browser/coding.instructions.md", "x".repeat(4001))).toEqual({ count: 4001, limit: 4000, unit: "characters" });
+	expect(measure("browser/general.instructions.md", "x".repeat(4001))).toEqual({ count: 4001, limit: 4000, unit: "characters" });
+});
+
+test("counts nested browser files in lines", () => {
+	expect(measure("browser/skills/maths-tutor/SKILL.md", "x".repeat(4001)).unit).toBe("lines");
 });

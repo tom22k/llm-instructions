@@ -1,4 +1,6 @@
-const BROWSER_CODING_FILE = "browser/coding.instructions.md";
+import { posix } from "node:path";
+
+const BROWSER_DIR = "browser";
 const MAX_BROWSER_CHARS = 4000;
 const MAX_LINES = 150;
 
@@ -7,7 +9,7 @@ export type Measurement = { count: number; limit: number; unit: "characters" | "
 export function measure(path: string, text: string): Measurement {
 	// Pasted text reaches github.com with LF endings, so CRLF checkouts must not inflate the count.
 	const normalised = text.replaceAll("\r\n", "\n");
-	if (path === BROWSER_CODING_FILE) {
+	if (posix.dirname(path) === BROWSER_DIR) {
 		return { count: [...normalised].length, limit: MAX_BROWSER_CHARS, unit: "characters" };
 	}
 	const trailingNewline = normalised.endsWith("\n") ? 1 : 0;
