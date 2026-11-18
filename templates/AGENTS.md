@@ -6,7 +6,7 @@ General coding standards come from each contributor's personal instructions; thi
 
 ## Project Overview
 
-<One or two sentences: what the project does, for whom, and its current state.>
+[One or two sentences: what the project does, for whom, and its current state.]
 
 ## Tech Stack
 
@@ -30,8 +30,8 @@ Run build, lint and tests before reporting a change as done.
 
 ## Architecture
 
-- `<dir>/`: [responsibility]
-- `<dir>/`: [responsibility]
+- `[dir]/`: [responsibility]
+- `[dir]/`: [responsibility]
 - Request or data flow: [e.g. route -> handler -> service -> repository]
 
 ## Conventions
