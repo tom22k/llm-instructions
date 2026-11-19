@@ -30,6 +30,7 @@ Codex and Gemini CLI have no path-scoped rules, so they do not receive the langu
 | [browser/general.instructions.md](browser/general.instructions.md) | Any LLM | General behaviour for non-coding chats |
 | [browser/coding.instructions.md](browser/coding.instructions.md) | Copilot Chat on github.com | Condensed `src/instructions.md` for coding chats |
 | [browser/skills/cover-letter/SKILL.md](browser/skills/cover-letter/SKILL.md) | Chat apps that accept uploaded skills | Cover letter from a CV (Markdown or PDF), a job description and an optional candidate profile |
+| [browser/skills/maths-tutor/SKILL.md](browser/skills/maths-tutor/SKILL.md) | Chat apps that accept uploaded skills | University-level maths explanations, and Socratic guidance through problems |
 
 ## Editing
 
@@ -70,6 +71,10 @@ Each folder in `src/skills/` is a self-contained [Agent Skill](https://agentskil
 ### Cover letter skill
 
 Upload `browser/skills/cover-letter/` as a skill, then attach a CV and a job description. Optionally attach a candidate profile with facts that persist across applications, copied from [assets/profile.template.md](browser/skills/cover-letter/assets/profile.template.md). Keep the filled-in profile outside this repository, since it holds personal data.
+
+### Maths tutor skill
+
+Upload `browser/skills/maths-tutor/` as a skill. Ask for a concept to get a direct explanation, or paste a problem and your attempt to be guided through it one question at a time. Ask for the solution to get it in full after one confirmation.
 
 ### Repository template
 
